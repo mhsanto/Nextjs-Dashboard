@@ -1,5 +1,5 @@
 import AcmeLogo from "@/app/ui/acme-logo";
-import { lusitana } from "./ui/font";
+import { lusitana } from "./ui/fonts";
 import Link from "next/link";
 import Image from "next/image";
 export default function Page() {
@@ -37,7 +37,13 @@ export default function Page() {
             className="hidden md:block"
             alt="Screenshots of the dashboard project showing desktop and mobile versions"
           />
-          <Image src="/hero-mobile.png" className="block md:hidden" width={560} height={620} alt="Hero" />
+          <Image
+            src="/hero-mobile.png"
+            className="block md:hidden"
+            width={560}
+            height={620}
+            alt="Hero"
+          />
         </div>
       </div>
     </main>
