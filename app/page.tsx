@@ -26,6 +26,14 @@ export default function Page() {
           >
             <span>Log in</span>
           </Link>
+          <Link
+            href="/dashboard"
+            className="flex items-center gap-5 self-start rounded-lg bg-transparent px-6 py-3 text-sm font-medium text-black transition-colors 
+            border-2 hover:bg-blue-400 md:text-base"
+
+          >
+            <span>Go to Dashboard Page</span>
+          </Link>
         </div>
         <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
           {/* Add Hero Images Here */}
