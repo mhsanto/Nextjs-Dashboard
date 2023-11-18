@@ -3,6 +3,7 @@ import { z } from "zod";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { signIn } from "@/auth";
 export type State = {
   errors?: {
     customerId?: string[];
@@ -93,12 +94,25 @@ export async function updateInvoice(id: string, formData: FormData) {
   redirect("/dashboard/invoices");
 }
 export async function deleteInvoice(id: string) {
-  throw new Error("test");
 
   try {
     await sql`DELETE FROM invoices WHERE id = ${id}`;
     revalidatePath("/dashboard/invoices");
   } catch (error: any) {
     console.log(error.message);
+  }
+}
+
+export async function authenticate(
+  prevState: string | undefined,
+  formData: FormData,
+) {
+  try {
+    await signIn('credentials', Object.fromEntries(formData));
+  } catch (error) {
+    if ((error as Error).message.includes('CredentialsSignin')) {
+      return 'CredentialsSignin';
+    }
+    throw error;
   }
 }
